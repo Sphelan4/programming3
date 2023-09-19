@@ -30,6 +30,9 @@ public class lab2
 		//letting user select time limit
 		int allotted_time = timer();
 
+		//tracking wrong answers
+		int wrong = 0;
+
 		//system start time
 		long start = System.currentTimeMillis();
 		long end = start + allotted_time;
@@ -54,7 +57,7 @@ public class lab2
 			//letting user quit
 			if (guess.equals("QUIT"))
 			{
-				terminate(score);
+				terminate(score, wrong);
 			}
 
 			//checking if user is right/wrong
@@ -66,10 +69,11 @@ public class lab2
 			else
 			{
 				incorrect(aaCode, score, end);
+				wrong++;
 			}
 		}
 
-		System.out.println("Final Score: " + score);
+		terminate(score, wrong);
 	
 	}
 
@@ -99,14 +103,23 @@ public class lab2
 				return timer();
 			}
 			int allotted_time = input * 1000;
+			System.out.println("");
 			return allotted_time;
 		}
 
 		//method to terminate program early
-		private static void terminate(int score)
+		private static void terminate(int score, int wrong)
 		{
-			System.out.println("Final score: " + score);
+			if (wrong == 0)
+			{
+			System.out.println("\nFinal Score: " + score + " Correct! \n" + wrong + " Incorrect! \n");
 			System.exit(0);
+			}
+			else
+			{
+			System.out.println("\nFinal Score: " + score + " Correct! \n" + wrong + " Incorrect :( \n");
+			System.exit(0);				
+			}
 		}
 
 		//method to report correct answers
