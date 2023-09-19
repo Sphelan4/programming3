@@ -27,9 +27,12 @@ public class lab2
 		//used later to gen random int
 		Random random = new Random();
 		
+		//letting user select time limit
+		int allotted_time = timer();
+
 		//system start time
 		long start = System.currentTimeMillis();
-		long end = start + 30000;
+		long end = start + allotted_time;
 		int score = 0;
 
 		//while timer is still running
@@ -71,6 +74,33 @@ public class lab2
 	}
 
 		//Trying to include more methods in my code as instructed in previous lab (wasnt really sure what to break off here as everything seemed so simple?)
+
+		//method to adjust timer (took way longer than it should have)
+		private static int timer()
+		{
+			//thought about asking in milliseconds, but thought this would be difficult for some users
+			System.out.println("Enter Desired Time Limit in Seconds:");
+			int input;
+
+			//using try to catch in user inputs string or something
+			try
+			{
+				input = Integer.parseInt(System.console().readLine());
+				
+				//capping at 5 mins bc Idk how stressful this could be to someones computer otherwise
+				if (input <= 0 || input >= 300)
+				{
+				throw new IllegalArgumentException();
+				}
+			}
+			catch (IllegalArgumentException e)
+			{
+				System.out.println("Error. Time Limit must be an integer larger than 0 and less than 300 \n");
+				return timer();
+			}
+			int allotted_time = input * 1000;
+			return allotted_time;
+		}
 
 		//method to terminate program early
 		private static void terminate(int score)
