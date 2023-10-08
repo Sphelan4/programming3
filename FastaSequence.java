@@ -205,10 +205,11 @@ public class FastaSequence
 Extra Credit:
 ChatGPT generated a very similar format to me, which makes sense given the specificity. 
 The ChatGPT included a feature that ensured all files read in had the ACTG in uppercase 
-which seems nice but irrelevant and I actually revised my writeTableSummary method based 
-on its input to use BufferedWriter as it is a better fit for larger documents (my test 
-document was not large, but FASTA files can definitely get large so it seemed like a solid 
-improvement). 
+which seems nice but irrelevant and it utilized BufferedReader instead of scanner to read 
+the file lines, which did not seem to matter much for the scope of this project. I did 
+actually make a revision to my writeTableSummary method based on ChatGPT input. I added 
+BufferedWriter as it is a better fit for larger documents (my test document was not large, 
+but FASTA files can definitely get large so it seemed like a solid improvement). 
 
 
 The ChatGPT generated output did not handle multiline fasta sequences - I think this was likely 
