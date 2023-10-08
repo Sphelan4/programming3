@@ -1,3 +1,0 @@
-sequenceID	numA	numC	numG	numT	sequence
-seq1		4	0	0	0	AAAA
-seq2		3	3	0	5	AAACCCTTTTT
